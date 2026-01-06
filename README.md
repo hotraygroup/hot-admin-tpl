@@ -1,4 +1,4 @@
-# A admin tpl base on nuxt3, primevue4, typescript and so on.
+# A admin tpl base on nuxt4, primevue4, typescript and so on.
 ![image](screen1.png)
 ![image](screen2.png)
 
