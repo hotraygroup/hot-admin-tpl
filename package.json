@@ -1,0 +1,38 @@
+{
+  "name": "hot-admin-tpl",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "postgenerate": "find dist/ -type f -iname *.html -exec gzip {} ';'; find dist/ -type f -iname *.svg -exec gzip {} ';'",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxtjs/i18n": "^10.2.1",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@pinia/nuxt": "^0.11.3",
+    "@primevue/themes": "^4.5.4",
+    "nuxt": "^4.2.2",
+    "pinia": "^3.0.4",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.5.4",
+    "tailwindcss-primeui": "^0.6.1",
+    "vue": "^3.5.26",
+    "vue-router": "^4.6.4",
+    "vue3-perfect-scrollbar": "^2.0.0"
+  },
+  "devDependencies": {
+    "@bootstrap-vue-next/nuxt": "^0.42.0",
+    "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
+    "@primevue/nuxt-module": "^4.5.4",
+    "bootstrap": "^5.3.8",
+    "bootstrap-vue-next": "^0.42.0",
+    "sass-embedded": "^1.97.2"
+  },
+  "overrides": {
+    "@pinia/nuxt": "$@pinia/nuxt"
+  }
+}
