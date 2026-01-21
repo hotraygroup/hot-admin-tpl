@@ -57,6 +57,14 @@
       .ps__thumb-y {
         right: 0;
       }
+
+      // Hide scrollbar on hover, only show when actively scrolling
+      &:hover > .ps__rail-y {
+        opacity: 0 !important;
+      }
+      &.ps--scrolling-y > .ps__rail-y {
+        opacity: 0.6 !important;
+      }
     }
 
     &.main-hidden {
@@ -181,6 +189,14 @@
       &.ps-container {
         padding-top: 1rem;
         padding-bottom: 1rem;
+      }
+
+      // Hide scrollbar on hover, only show when actively scrolling
+      &:hover > .ps__rail-y {
+        opacity: 0 !important;
+      }
+      &.ps--scrolling-y > .ps__rail-y {
+        opacity: 0.6 !important;
       }
     }
 
