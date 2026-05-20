@@ -14,6 +14,13 @@
     display: flex;
     align-items: center;
 
+    // Enhanced elevation with layered shadows
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.15),
+        0 1px 2px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--surface-border-subtle, rgba(255, 255, 255, 0.05));
+
     .layout-topbar-logo-container {
         width: 20rem;
         display: flex;
@@ -26,11 +33,21 @@
         font-size: 1.5rem;
         border-radius: var(--content-border-radius);
         color: var(--text-color);
-        font-weight: 500;
+        font-weight: 700;
         gap: 0.5rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        transition: all var(--transition-fast, 150ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
 
         svg {
             width: 3rem;
+        }
+
+        &:hover {
+            background: linear-gradient(135deg, var(--accent-primary, #818cf8) 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         &:focus-visible {
@@ -47,11 +64,18 @@
         width: 2.5rem;
         height: 2.5rem;
         color: var(--text-color);
-        transition: background-color var(--element-transition-duration);
+        transition:
+            background-color var(--element-transition-duration),
+            transform var(--transition-fast, 150ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
         cursor: pointer;
 
         &:hover {
-            background-color: var(--surface-hover);
+            background-color: var(--accent-glow, rgba(129, 140, 248, 0.2));
+            transform: translateY(-1px);
+        }
+
+        &:active {
+            transform: scale(0.95);
         }
 
         &:focus-visible {
@@ -60,6 +84,11 @@
 
         i {
             font-size: 1.25rem;
+            transition: transform var(--transition-fast, 150ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+        }
+
+        &:hover i {
+            transform: scale(1.1);
         }
 
         span {
@@ -70,6 +99,11 @@
         &.layout-topbar-action-highlight {
             background-color: var(--primary-color);
             color: var(--primary-contrast-color);
+
+            &:hover {
+                background-color: var(--accent-primary, #818cf8);
+                box-shadow: 0 0 12px var(--accent-glow, rgba(129, 140, 248, 0.2));
+            }
         }
     }
 
@@ -120,15 +154,17 @@
             background-color: var(--surface-overlay);
             transform-origin: top;
             box-shadow:
-                0px 3px 5px rgba(0, 0, 0, 0.02),
-                0px 0px 2px rgba(0, 0, 0, 0.05),
-                0px 1px 4px rgba(0, 0, 0, 0.08);
+                0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
             border-radius: var(--content-border-radius);
             padding: 1rem;
             right: 2rem;
             top: 4rem;
             min-width: 15rem;
             border: 1px solid var(--surface-border);
+            // Backdrop blur for modern feel
+            backdrop-filter: blur(16px);
+            background-color: rgba(var(--p-surface-900), 0.95);
 
             .layout-topbar-menu-content {
                 gap: 0.5rem;
@@ -141,6 +177,12 @@
                 justify-content: flex-start;
                 border-radius: var(--content-border-radius);
                 padding: 0.5rem 1rem;
+                transition: all var(--transition-fast, 150ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+
+                &:hover {
+                    background-color: var(--accent-glow, rgba(129, 140, 248, 0.2));
+                    padding-left: 1.25rem;
+                }
 
                 i {
                     font-size: 1rem;

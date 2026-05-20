@@ -43,11 +43,19 @@
     background: var(--surface-card);
     z-index: 3;
     position: fixed;
-    // transition: transform $menu-collapse-time;
     padding-top: 0*$main-margin ;
     padding-bottom: 0.725rem;
     left: 0;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.02), 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 1px 4px rgba(0, 0, 0, 0.08);
+    // Refined shadow
+    box-shadow:
+        4px 0 24px rgba(0, 0, 0, 0.15),
+        inset -1px 0 0 rgba(255, 255, 255, 0.03);
+    // Subtle gradient overlay
+    background: linear-gradient(
+        180deg,
+        var(--surface-card) 0%,
+        color-mix(in srgb, var(--accent-primary, #818cf8) 3%, var(--surface-card)) 100%
+    );
 
     .scroll {
       padding-right: unset;
@@ -91,29 +99,41 @@
         font-weight: 600;
         border-bottom: 1px solid var(--surface-border);
         color: var(--text-color);
-        transition: color $menu-collapse-time;
-        transition: background $menu-collapse-time;
+        // Enhanced transition
+        transition:
+            color var(--transition-fast, 150ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+            background-color var(--transition-fast, 150ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
         text-decoration: none;
 
         &:hover,
         &:focus {
-          color: var(--primary-color);
-          background-color: var(--surface-hover);
+          color: var(--accent-primary, #818cf8);
+          background: linear-gradient(
+              90deg,
+              var(--accent-glow, rgba(129, 140, 248, 0.2)) 0%,
+              transparent 100%
+          );
         }
       }
 
       i {
         font-size: 2.25rem;
         line-height: 3rem;
+        transition: transform var(--transition-fast, 150ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
       }
 
       &.active a {
-        color: var(--primary-color);
+        color: var(--accent-primary, #818cf8);
+        background: linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--accent-primary, #818cf8) 15%, transparent) 0%,
+            transparent 100%
+        );
       }
 
       &.active:after {
         content: " ";
-        background: var(--primary-color);
+        background: var(--accent-primary, #818cf8);
         border-radius: 0.715rem;
         position: absolute;
         width: 0.425rem;
@@ -121,6 +141,12 @@
         top: 50%;
         transform: translateY(-50%);
         left: 0;
+        box-shadow: 0 0 12px var(--accent-glow, rgba(129, 140, 248, 0.2));
+        animation: pulse-glow 2s infinite;
+      }
+
+      &.active i {
+        animation: icon-bounce 0.3s ease-out;
       }
 
       &:last-of-type {
@@ -168,14 +194,14 @@
     position: fixed;
     left: $main-menu-width;
     border-left: 1px solid var(--surface-border);
-    //@include depth(2);
-    // transition: transform $menu-collapse-time;
     height: calc(100% - #{$topbar-height});
     padding-top: $main-margin;
     padding-bottom: 0.715rem;
     padding-right: 0;
-    //border-radius: 0 0.75rem 0.75rem 0;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.02), 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 1px 4px rgba(0, 0, 0, 0.08);
+    // Enhanced shadow
+    box-shadow:
+        4px 0 24px rgba(0, 0, 0, 0.15),
+        inset 1px 0 0 rgba(255, 255, 255, 0.03);
 
     .scroll {
       margin-right: unset;
@@ -207,6 +233,15 @@
         margin-bottom: 0;
         margin-left: 2rem;
         position: relative;
+        // Staggered animation on appear
+        animation: submenu-slide-in 0.25s ease-out forwards;
+        opacity: 0;
+
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i * 30}ms;
+            }
+        }
 
         a {
           font-size: 1rem;
@@ -215,6 +250,14 @@
           padding: 0.4rem 0;
           margin-bottom: 0.715rem;
           color: var(--text-color);
+          transition:
+              color var(--transition-fast, 150ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+              padding-left var(--transition-fast, 150ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+
+          &:hover {
+            color: var(--accent-primary, #818cf8);
+            padding-left: 4px;
+          }
         }
 
         i {
@@ -228,12 +271,12 @@
         a:hover,
         &.active i,
         &.active a {
-          color: var(--primary-color);
+          color: var(--accent-primary, #818cf8);
         }
 
         &.active:after {
           content: " ";
-          background: var(--primary-color);
+          background: var(--accent-primary, #818cf8);
           border-radius: 0.715rem;
           position: absolute;
           width: 0.285rem;
@@ -241,6 +284,7 @@
           top: 50%;
           transform: translateY(-50%);
           left: -1.15rem;
+          box-shadow: 0 0 8px var(--accent-glow, rgba(129, 140, 248, 0.2));
         }
 
         span {

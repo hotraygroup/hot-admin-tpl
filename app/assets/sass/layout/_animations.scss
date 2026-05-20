@@ -1,0 +1,162 @@
+@use './variables/_common' as *;
+
+// Animation durations from _common.scss
+$animation-fast: 150ms;
+$animation-normal: 250ms;
+$animation-slow: 400ms;
+
+// Page transitions
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+// Micro-interactions
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 var(--accent-glow);
+    }
+    50% {
+        box-shadow: 0 0 0 8px transparent;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes slide-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes icon-bounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+// Submenu stagger animation
+@keyframes submenu-slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+// Loading skeleton
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--surface-hover) 25%,
+        var(--surface-border) 50%,
+        var(--surface-hover) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: var(--content-border-radius);
+}
+
+// Animation utility classes
+.animate-fade-in-up {
+    animation: fadeInUp $animation-normal ease-out;
+}
+
+.animate-fade-in-scale {
+    animation: fadeInScale $animation-normal ease-out;
+}
+
+.animate-slide-in-right {
+    animation: slide-in-right $animation-normal ease-out;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s infinite;
+}
+
+.animate-icon-bounce {
+    animation: icon-bounce 0.3s ease-out;
+}
+
+// Page transition styles
+.page-enter-active,
+.page-leave-active {
+    transition: all $animation-normal var(--ease-out-expo);
+}
+
+.page-enter-from {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.page-leave-to {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+// Submenu staggered animation
+.submenu-item {
+    animation: submenu-slide-in 0.25s ease-out forwards;
+    opacity: 0;
+
+    @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+            animation-delay: #{$i * 30}ms;
+        }
+    }
+}
+
+// Hover glow effect
+.hover-glow {
+    transition: box-shadow $animation-fast var(--ease-out-expo);
+
+    &:hover {
+        box-shadow: var(--shadow-glow);
+    }
+}
+
+// Reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

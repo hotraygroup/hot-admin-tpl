@@ -2,4 +2,12 @@
     --surface-ground: var(--p-surface-950);
     --code-background: var(--p-surface-800);
     --code-color: var(--p-surface-100);
+
+    // Enhanced dark surface with subtle blue tint
+    --surface-elevated: #1e293b;
+    --surface-card-enhanced: #1e293b;
+
+    // Border refinements
+    --surface-border-subtle: rgba(148, 163, 184, 0.1);
+    --surface-border-accent: rgba(129, 140, 248, 0.3);
 }

@@ -2,7 +2,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 0 1rem 0;
-    gap: 0.5rem;
+    padding: 1.25rem 0 1.25rem 0;
+    gap: 0.75rem;
     border-top: 1px solid var(--surface-border);
+    // Subtle gradient top border
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        color-mix(in srgb, var(--accent-primary, #818cf8) 3%, transparent) 100%
+    );
+
+    // Subtle hover interaction for link
+    a {
+        transition:
+            color var(--transition-fast, 150ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+            text-shadow var(--transition-fast, 150ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+
+        &:hover {
+            color: var(--accent-primary, #818cf8);
+            text-shadow: 0 0 8px var(--accent-glow, rgba(129, 140, 248, 0.2));
+        }
+    }
 }

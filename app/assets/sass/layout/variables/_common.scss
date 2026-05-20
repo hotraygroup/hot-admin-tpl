@@ -29,6 +29,11 @@ $menu-collapse-time: 300ms;
 $animation-time-long: 1000ms;
 $animation-time-short: 200ms;
 
+// Animation durations
+$animation-fast: 150ms;
+$animation-normal: 250ms;
+$animation-slow: 400ms;
+
 :root {
     --primary-color: var(--p-primary-color);
     --primary-contrast-color: var(--p-primary-contrast-color);
@@ -48,4 +53,38 @@ $animation-time-short: 200ms;
     --focus-ring-color: var(--p-focus-ring-color);
     --focus-ring-offset: var(--p-focus-ring-offset);
     --focus-ring-shadow: var(--p-focus-ring-shadow);
+
+    // Custom accent: Harmonized with PrimeVue primary (subtle blue-violet shift)
+    --accent-primary: var(--p-primary-400, #818cf8);
+    --accent-primary-hover: var(--p-primary-300, #a5b4fc);
+    --accent-secondary: var(--p-primary-500, #6366f1);
+    --accent-glow: rgba(129, 140, 248, 0.2);
+
+    // Warm accent: Amber (for warnings/important)
+    --accent-warning: #f59e0b;
+    --accent-warning-bg: rgba(245, 158, 11, 0.12);
+
+    // Success: Emerald
+    --accent-success: #10b981;
+    --accent-success-bg: rgba(16, 185, 129, 0.12);
+
+    // Error: Rose
+    --accent-error: #f43f5e;
+    --accent-error-bg: rgba(244, 63, 94, 0.12);
+
+    // Refined shadows
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.35), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 20px var(--accent-glow);
+
+    // Noise texture overlay
+    --noise-opacity: 0.03;
+
+    // Transition timing
+    --transition-fast: 150ms;
+    --transition-normal: 250ms;
+    --transition-smooth: 350ms;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 }
